@@ -82,7 +82,7 @@ themeToggleBtn.addEventListener('click', handleThemeToggle);
 ---
 
 ## 🔗 배포 및 정보
-- **배포 URL**: `https://<본인-GitHub-아이디>.github.io/<저장소-이름>/`
+- **배포 URL**: `https://syj399777-coder.github.io/codyssey_B1-1/`
 - **사용 기술**: HTML5, CSS3, JavaScript (ES6+)
 - **개발 환경**: VS Code, Live Server
 
@@ -95,7 +95,7 @@ themeToggleBtn.addEventListener('click', handleThemeToggle);
 | **반응형 레이아웃** | - 미디어 쿼리(`768px`, `1024px`)를 활용하여 모바일, 태블릿, 데스크톱 레이아웃 최적화<br>- 모바일 환경에서 네비게이션이 숨겨지고 햄버거 메뉴 버튼으로 전환 |
 | **다크 모드** | - Header 우측 토글 버튼으로 라이트/다크 테마 즉시 전환<br>- `localStorage`에 상태를 저장하여 **페이지 새로고침 후에도 테마 유지가 가능** |
 | **인터랙티브 UI** | - 모바일 햄버거 메뉴 토글 동작<br>- `IntersectionObserver` 기반 스크롤 감지 페이드인 애니메이션<br>- 스크롤 300px 이상 시 나타나는 '맨 위로 가기' 버튼 및 부드러운 스크롤(`scroll-top-btn`) |
-| **GitHub API 연동** | - GitHub API(`https://api.github.com/users/{username}/repos`) 비동기호출<br>- **4가지 UI 상태 구별**: `로딩 스피너` / `성공(카드 리스트)` / `에러(메시지 및 재시도 버튼)` / `빈 데이터` |
+| **GitHub API 연동** | - GitHub API 비동기호출<br>- **4가지 UI 상태 구별**: `로딩 스피너` / `성공(카드 리스트)` / `에러(메시지 및 재시도 버튼)` / `빈 데이터` |
 | **Contact 폼 유효성 검증** | - 제출 시 `event.preventDefault()`로 기본 동작 방지<br>- 필수 값 누락 및 이메일 정규식 유효성 실패 시 **입력 필드 하단에 즉각적인 에러 메시지 표시** |
 
 ---
@@ -136,18 +136,19 @@ themeToggleBtn.addEventListener('click', handleThemeToggle);
 
 #### Q1. "이벤트 → 상태 변경 → 화면 업데이트" 흐름이 코드에서 어떻게 연결되나요?
 **(예시: 다크 모드 토글 로직)**
-1. **이벤트 발생**: 사용자가 다크 모드 버튼을 클릭합니다.
-   ```javascript
+   1. **이벤트 발생**: 사용자가 다크 모드 버튼을 클릭합니다.
+  
    elements.themeToggle.addEventListener('click', () => { ... });
+   
    2. **상태 변경**: 전역 `state.theme` 값을 전환하고 `localStorage` 상태를 갱신합니다.
-   ```javascript
+
    state.theme = state.theme === 'light' ? 'dark' : 'light';
-   ```
-3. **화면 업데이트**: 변경된 상태를 바탕으로 DOM을 업데이트합니다.
-   ```javascript
+ 
+   3. **화면 업데이트**: 변경된 상태를 바탕으로 DOM을 업데이트합니다.
+
    elements.html.setAttribute('data-theme', state.theme);
    // CSS 변수가 자동으로 동기화되어 화면 전체 색상이 변경됨
-   ```
+
 
 #### Q2. `async/await`와 `try/catch`를 활용한 API 호출 성공/실패 분기 처리 흐름은 어떻게 되나요?
 
@@ -218,18 +219,6 @@ const fetchGitHubRepos = async () => {
 #### Q2. 반응형 디자인에서 "모바일 퍼스트(Mobile-First)" 접근 방식을 사용한 이유는 무엇인가요?
 * **성능 및 사용자 경험 우선**: 모바일 화면은 제약 요소(작은 스크린, 느린 네트워크 환경 등)가 많으므로, 핵심 콘텐츠와 가장 경량화된 레이아웃을 먼저 작성합니다.
 * **점진적 향상(Progressive Enhancement)**: 모바일 기준 기본 CSS에 `@media (min-width: 768px)`처럼 큰 화면에 필요한 스타일을 덧붙여 나가는 방식이, 데스크톱용 복잡한 코드를 모바일에서 불필요하게 덮어쓰거나 오버라이드하는 것보다 **코드 양이 줄어들고 유지보수에 훨씬 유리**하기 때문입니다.
-
----
-
-## 🛠️ 실행 방법
-1. 저장소 클론 (or Zip 다운로드)
-   ```bash
-   git clone [https://github.com/](https://github.com/)<username>/<repository-name>.git
-   ```
-2. VS Code에서 폴더를 연 후, `index.html` 파일을 **Live Server** 확장 프로그램을 사용하여 실행합니다.
-
-
-
 
 ---
 
