@@ -33,7 +33,7 @@
 ---
 
 #### 3. `querySelector`와 `addEventListener`를 통한 DOM 선택 및 이벤트 연결 흐름
-```javascript
+
 // 1. DOM 요소 선택 (querySelector)
 const themeToggleBtn = document.querySelector('#theme-toggle');
 
@@ -44,7 +44,6 @@ const handleThemeToggle = () => {
 
 // 3. 이벤트 연결 (addEventListener)
 themeToggleBtn.addEventListener('click', handleThemeToggle);
-///
 
 * **흐름 설명**: 브라우저가 HTML을 읽어 만든 DOM(Document Object Model) 트리에 `querySelector`로 접근하여 제어할 요소를 가져옵니다. 그 후 `addEventListener`를 통해 해당 요소에 `click`, `submit`, `scroll` 등의 이벤트 발생을 감지하는 '리스너'를 등록하여, 사용자가 동작을 취할 때 미리 지정한 함수가 즉시 실행되도록 연결합니다.
 
@@ -151,7 +150,7 @@ themeToggleBtn.addEventListener('click', handleThemeToggle);
    ```
 
 #### Q2. `async/await`와 `try/catch`를 활용한 API 호출 성공/실패 분기 처리 흐름은 어떻게 되나요?
-```javascript
+
 const fetchGitHubRepos = async () => {
     // 1. 요청 시작: 로딩 상태로 변경 및 UI 렌더링
     state.isLoading = true;
@@ -179,26 +178,26 @@ const fetchGitHubRepos = async () => {
         renderProjectsState(); // 에러 메시지 + [다시 시도] 버튼 출력
     }
 };
-```
+
 
 #### Q3. 배열 메서드(`map`, `filter`)를 사용한 카드 UI 동적 생성 단계
 1. **필터링 (`filter`)**: 전체 저장소 배열 중 사용자가 선택한 언어 조건(`state.filter`)과 일치하는 프로젝트만 추출합니다.
-   ```javascript
+
    const filteredRepos = state.projects.filter(repo => repo.language === state.filter);
-   ```
+ 
 2. **변환 (`map`)**: 필터링된 객체 배열을 템플릿 리터럴(`HTML 문자열`) 배열로 1:1 변환합니다.
-   ```javascript
+  
    const htmlArray = filteredRepos.map(repo => `
        <article class="project-card">
            <h3>${repo.name}</h3>
            <p>${repo.description}</p>
        </article>
    `);
-   ```
+
 3. **결합 및 렌더링 (`join`)**: 배열을 하나의 HTML 문자열로 결합하여 innerHTML에 삽입합니다.
-   ```javascript
+
    elements.projectsContainer.innerHTML = htmlArray.join('');
-   ```
+
 
 #### Q4. Flexbox와 Grid는 각각 어디에 적용하였고 왜 그 방식을 선택했나요?
 * **Flexbox 적용 (`Header`, `Hero CTA`, `Footer`)**:
