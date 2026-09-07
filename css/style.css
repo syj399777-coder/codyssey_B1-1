@@ -116,7 +116,7 @@ ul {
 }
 
 /* ==========================================
-   2. Header & Nav (Flexbox)
+   2. Header & Nav (Flexbox) - 시각 효과 강화
    ========================================== */
 .header {
     position: fixed;
@@ -125,21 +125,27 @@ ul {
     width: 100%;
     z-index: 1000;
     background-color: transparent;
-    transition: var(--transition);
-}
-
-/* 스크롤 60px 이상 시 스타일 변경 */
-.header.scrolled {
-    background-color: var(--nav-bg);
-    backdrop-filter: blur(8px);
-    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
 }
 
 .header-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 70px;
+    height: 80px; /* 초기 헤더 높이 */
+    transition: all 0.3s ease;
+}
+
+/* 스크롤 60px 이상 시 스타일 (확실한 직관적 변화) */
+.header.scrolled {
+    background-color: var(--bg-color);            /* 배경을 확실하게 채움 */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);     /* 짙은 그림자 효과 */
+    border-bottom: 2px solid var(--primary-color);  /* 하단 포인트 컬러 라인 */
+}
+
+/* 스크롤 시 헤더 높이가 슬림하게 축소 */
+.header.scrolled .header-container {
+    height: 60px;
 }
 
 .logo {
